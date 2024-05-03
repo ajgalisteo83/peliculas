@@ -6,6 +6,8 @@ import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public class GeneroRepositoryImpl implements IGeneroRepository {
 
@@ -21,5 +23,11 @@ public class GeneroRepositoryImpl implements IGeneroRepository {
     @Transactional
     public Genero findById(Long id) {
         return entityManager.find(Genero.class, id);
+    }
+
+    @Override
+    @Transactional
+    public List<Genero> findAll() {
+        return entityManager.createQuery("SELECT g FROM Genero g", Genero.class).getResultList();
     }
 }

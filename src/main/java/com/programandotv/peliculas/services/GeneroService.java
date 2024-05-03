@@ -4,6 +4,8 @@ import com.programandotv.peliculas.dao.IGeneroRepository;
 import com.programandotv.peliculas.entities.Genero;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class GeneroService implements IGeneroService {
 
@@ -21,5 +23,10 @@ public class GeneroService implements IGeneroService {
     @Override
     public Genero findById(Long id) {
         return repository.findById(id);
+    }
+
+    @Override
+    public List<Genero> findAll() {
+        return repository.findAll();
     }
 }
